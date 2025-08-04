@@ -1,0 +1,55 @@
+import pandas as pd
+import os
+from pathlib import Path
+
+def read_file(file_path):
+    ext = file_path.suffix.lower()
+    try:
+        if ext == '.csv':
+            return pd.read_csv(file_path)
+        elif ext == '.xlsx':
+            return pd.read_excel(file_path)
+        elif ext == '.txt':
+            # Try multiple delimiters
+            for sep in [',', '\t', '|']:
+                try:
+                    df = pd.read_csv(file_path, sep=sep)
+                    if len(df.columns) > 1:
+                        return df
+                except:
+                    continue
+            return pd.read_csv(file_path, sep=None, engine='python')
+    except Exception as e:
+        print(f"❌ Error reading {file_path.name}: {e}")
+        return None
+
+def merge_files_to_dataframe(folder_path):
+    all_files = list(Path(folder_path).glob('*.csv')) + \
+                list(Path(folder_path).glob('*.xlsx')) + \
+                list(Path(folder_path).glob('*.txt'))
+
+    print(f"\n📂 Found {len(all_files)} files to process:\n")
+    for idx, file in enumerate(all_files, 1):
+        print(f"{idx}. {file.name}")
+    
+    combined_df = pd.DataFrame()
+
+    for file in all_files:
+        df = read_file(file)
+        if df is not None:
+            df['source_file'] = file.name  # Optional: tag file source
+            combined_df = pd.concat([combined_df, df], axis=0, ignore_index=True, sort=False)
+
+    return combined_df
+
+# 🔄 Example usage
+folder = "your/folder/path"  # 🔁 Replace with your actual folder path
+final_df = merge_files_to_dataframe(folder)
+
+print("\n✅ Final merged DataFrame preview:")
+print(final_df.head())
+print(f"\n📊 Total rows combined: {len(final_df)}")
+print(f"📊 Total columns in merged DataFrame: {len(final_df.columns)}")
+
+# Optional: Save
+# final_df.to_csv("merged_output.csv", index=False)
