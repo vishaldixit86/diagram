@@ -1,0 +1,41 @@
+ Phase              | Task                                                                 | Current Status                 | Notes                                                                 |
+|--------------------|----------------------------------------------------------------------|-------------------------------|-----------------------------------------------------------------------|
+| Phase 1: Completed | Manual file upload for IAM, HR, Persona                             | ✅ Done                        | Files are uploaded by developers manually                            |
+|                    | Python script for data processing                                   | ✅ Done                        | Produces status: missing/excess/match                                |
+|                    | Tableau dashboard connected                                          | ✅ Done                        | Visualizes output data                                                |
+| Phase 2: In Progress | Persona mapping by management level + cost center to persona        | ❌ Not Started                | Required for runtime persona matching                                |
+|                    | Automate file drop for IAM & HR files                              | ⚠️ Planned                    | Need folder/watch location defined                                   |
+|                    | Define folder path or bucket for automated data drops              | ❌ Not Started                | To be coordinated with Infra team                                    |
+|                    | Add Git repo for versioning scripts & config                        | ⚠️ In Planning                | Scripts should be version-controlled                                 |
+|                    | Integrate scheduler to auto-trigger weekly pipeline                 | ⚠️ In Planning                | E.g. Airflow, cron, AWS EventBridge                                  |
+| Phase 3: Production | Move to cloud-based processing (Lambda/ECS/Azure)                   | ❌ Not Started                | Ensure scalability and fault-tolerance                               |
+|                    | Secure with IAM roles, encryption, and access audit                 | ❌ Not Started                | For compliance and sensitive data protection                         |
+|                    | Setup CI/CD pipelines                                               | ❌ Not Started                | Automate deployments and testing                                     |
+|                    | Monitoring pipeline reliability and data anomalies                  | ❌ Not Started                | Add alerts for failures, late files, data mismatches                 |
+
+
+
+### Phase 1: Completed
+These steps have already been implemented as part of the development process:
+- **Data Ingestion:** Manual or scheduled upload of USCB Persona List, IAM App Registry, and HR Headcount into Source Storage.
+- **Processing Script:** Python script implemented to combine and analyze the datasets, producing status (missing/excess/match).
+- **Visualization:** Tableau Dashboard connected to the processed data, enabling stakeholders to view the application-persona matching output.
+
+---
+
+### Phase 2: Yet to Be Done
+These elements are in development or planned:
+- **Persona Mapping Logic:** Implement a service that maps BRID dynamically using management-level and cost-center combinations.
+- **Scheduler Integration:** Introduce a job scheduler to trigger the pipeline on a weekly basis.
+- **Script Enhancement:** Extend the processing logic to use the new mapping rules and ensure it handles unseen BRIDs using pre-trained mappings.
+- **Folder Configuration:** Define and configure automated drop folders (S3/bucket/shared path) for HR and IAM files.
+- **Source Control Setup:** Establish a Git repo for scripts, configurations, and deployment logic.
+
+---
+
+### Phase 3: Required for Production
+To make the system production-ready, the following technical and operational elements must be addressed:
+- **Deployment Architecture:** Move ETL components (Mapping Service, Scheduler, Python Script) to a scalable platform (e.g. AWS Lambda, ECS, or Azure Functions).
+- **Security & Governance:** Apply IAM role-based access, encrypt data in transit and at rest, and establish audit logging.
+- **Automation Pipelines:** Set up CI/CD for code deployments, unit testing, and staging/production promotion.
+- **Monitoring & Reliability:** Add operational monitoring for job failures and data anomalies using tools like CloudWatch, Prometheus, or Grafana.
