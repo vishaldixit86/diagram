@@ -58,3 +58,49 @@ print(f"📊 Total columns in merged DataFrame: {len(final_df.columns)}")
 
 # Optional: Save to CSV
 # final_df.to_csv("merged_output.csv", index=False)
+
+
+
+######
+
+
+
+
+import pandas as pd
+from pathlib import Path
+
+def read_excel_file(file_path: Path):
+    try:
+        df = pd.read_excel(file_path, engine='openpyxl' if file_path.suffix == '.xlsx' else None)
+        df['source_file'] = file_path.name  # ✅ Add source file name
+        return df
+    except Exception as e:
+        print(f"❌ Error reading {file_path.name}: {e}")
+        return None
+
+def merge_excel_files(folder_path):
+    folder = Path(folder_path)
+    excel_files = list(folder.glob('*.xls')) + list(folder.glob('*.xlsx'))
+
+    print(f"\n📂 Found {len(excel_files)} Excel files to process:\n")
+    for idx, file in enumerate(excel_files, 1):
+        print(f"{idx}. {file.name}")
+
+    combined_df = pd.DataFrame()
+
+    for file in excel_files:
+        df = read_excel_file(file)
+        if df is not None:
+            combined_df = pd.concat([combined_df, df], axis=0, ignore_index=True, sort=False)
+
+    return combined_df
+
+# === Run ===
+folder_path = "your/folder/path"  # Change this
+final_df = merge_excel_files(folder_path)
+
+print("\n✅ Final merged Excel DataFrame preview:")
+print(final_df.head())
+print(f"\n📊 Total rows: {len(final_df)} | Columns: {len(final_df.columns)}")
+
+# final_df.to_csv("merged_excel_output.csv", index=False)
