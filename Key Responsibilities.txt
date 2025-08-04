@@ -1,0 +1,38 @@
+Key Responsibilities:
+Write Python scripts to automate data extraction, cleaning, transformation, and loading (ETL).
+
+Build, publish, and maintain interactive Tableau dashboards using business data.
+
+Analyze structured data (CSV, Excel, SQL databases) to generate meaningful insights.
+
+Implement job scheduling and automation using tools like Windows Task Scheduler, cron jobs, or Python-based schedulers (e.g., schedule, Airflow basics).
+
+Monitor and troubleshoot scheduled jobs and data refresh processes.
+
+Support in identifying data anomalies, inconsistencies, and performance issues.
+
+Work closely with business teams to gather requirements and translate them into actionable reports and dashboards.
+
+🧠 Required Skills:
+Basic proficiency in Python (especially pandas, datetime, file I/O).
+
+Experience with Tableau Desktop for data visualization and dashboard creation.
+
+Knowledge of data analysis and preprocessing techniques.
+
+Familiarity with job scheduling (e.g., Python schedule, cron, Task Scheduler).
+
+Basic understanding of SQL for querying relational databases.
+
+Attention to detail and ability to handle repetitive data tasks with automation.
+
+Strong problem-solving and documentation skills.
+
+⭐ Nice to Have:
+Exposure to Tableau Server or Tableau Public publishing.
+
+Familiarity with job orchestration tools like Apache Airflow or Control-M.
+
+Experience using Git or version control for script management.
+
+Awareness of API usage and data integration techniques.
