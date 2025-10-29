@@ -99,6 +99,61 @@ def merge_excel_files(folder_path):
 folder_path = "your/folder/path"  # Change this
 final_df = merge_excel_files(folder_path)
 
+
+#####################################################################
+
+
+import pandas as pd
+
+# Assuming your dataframe is called df
+# Columns include: matched_applications, missing_applications, excess_applications
+
+def flatten_applications(df):
+    # Collect exploded DataFrames
+    flattened_frames = []
+    
+    # Define mapping of columns to statuses
+    status_map = {
+        'matched_applications': 'matched',
+        'missing_applications': 'missing',
+        'excess_applications': 'excess'
+    }
+    
+    for col, status in status_map.items():
+        temp = df.copy()
+        
+        # Explode so each list element becomes its own row
+        temp = temp.explode(col)
+        
+        # Rename to a unified column
+        temp = temp.rename(columns={col: 'applications'})
+        
+        # Assign the status type
+        temp['status'] = status
+        
+        # Keep only non-null, non-empty applications
+        temp = temp[temp['applications'].notna()]
+        temp = temp[temp['applications'].astype(str).str.strip() != '']
+        
+        flattened_frames.append(temp)
+    
+    # Concatenate all exploded DataFrames
+    combined = pd.concat(flattened_frames, ignore_index=True)
+    
+    # Drop original list columns
+    drop_cols = list(status_map.keys())
+    cols_to_keep = [col for col in df.columns if col not in drop_cols]
+    
+    # Final clean dataframe
+    combined = combined[cols_to_keep + ['applications', 'status']]
+    
+    return combined
+
+
+# Example usage:
+# final_df = flatten_applications(df)
+# print(final_df.head())
+
 print("\n✅ Final merged Excel DataFrame preview:")
 print(final_df.head())
 print(f"\n📊 Total rows: {len(final_df)} | Columns: {len(final_df.columns)}")
