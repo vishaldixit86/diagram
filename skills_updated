@@ -1,0 +1,25 @@
+Skill Category	Skill Set	Description / Relevance to Current Work
+Programming & Automation	Python	Core development for data cleaning, transformation, persona mapping, entitlement comparison, automation scripts, and pipeline orchestration
+	Pandas, NumPy	Data wrangling across HR, IAM, headcount, entitlement, and access datasets
+	Regex & Text Processing	Path normalization for shared drives, AD group parsing, entitlement extraction
+Data Analysis & Engineering	Data Profiling & Cleaning	Handling nulls, duplicates, inconsistent formats across IAM and HR data
+	Data Transformation	Flattening nested permissions, persona-based entitlement modeling
+	ETL / ELT Concepts	Preparing datasets for analytics, reporting, and GenAI ingestion
+Visualization & Reporting	Tableau	Building dashboards for Should-Have vs Does-Have access, risk exposure, coverage metrics
+	KPI & Metric Design	% coverage, excess access, missing access, persona alignment indicators
+GenAI & LLM Enablement	GenAI Fundamentals	Understanding LLM capabilities for access governance, Q&A, and summarization
+	Prompt Engineering	Designing prompts for access insights, audit responses, and governance chatbots
+	RAG (Retrieval-Augmented Generation)	Using IAM, HR, entitlement data for grounded GenAI responses
+	Multi-Agent Concepts	Persona agents, reviewer agents, and escalation flows for governance
+Machine Learning (Foundational)	Classification Basics	Dispute categorization, access risk tagging, entitlement grouping
+	Similarity Models	Matching personas to roles, entitlements, and access patterns
+	Feature Engineering	Creating signals from access frequency, role overlap, and hierarchy
+IAM & Access Governance	Persona-Based Access Control (PBAC)	Mapping personas to cost centers, management levels, and entitlements
+	Role & Entitlement Modeling	BRID, application permissions, AD groups, shared drives
+	Should-Have vs Does-Have Analysis	Identifying missing and excess access for remediation
+Cloud & Platform (Required for Deployment)	AWS Fundamentals	S3 for data landing, compute for processing, secure access control
+	Data Lake Concepts	Centralized storage of headcount, IAM, entitlement data
+	Security & Compliance Awareness	Least privilege, audit readiness, access traceability
+Collaboration & Delivery	Requirement Translation	Converting IAM / audit needs into technical logic
+	Documentation	Technical specs, data dictionaries, audit-ready explanations
+	Stakeholder Communication	Working with IAM, Risk, Compliance, and Business teams
