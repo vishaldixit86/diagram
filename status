@@ -1,0 +1,10 @@
+Workstream / Activity	What Has Been Carried Out	Current Status	Pending / Next Steps	Remarks
+Persona–Cost Center–Management Level Mapping	Mapping initiated using enterprise headcount file; persona alignment performed across cost center and management hierarchy	67% completed	Remaining 33% mapping in progress	Coverage expanding iteratively as data quality improves
+CoPal / Functional Files Creation	Initial CoPal files created for Care and Credit functions	Partially completed	CoPal files pending for Collections, Fraud, KYC, and other functions	File structure standardized for future automation
+Application Entitlements Script	Script development initiated to extract and normalize application-level entitlements	In progress	Complete entitlement comparison logic and validation	Will support Should-Have vs Does-Have analysis
+Shared Drive & AD Group Mapping	Logic being developed to map Shared Drive access and AD group memberships	In progress	Finalize normalization, de-duplication, and matching logic	Includes path standardization and access reconciliation
+IAM & Access Data Cleaning	Data cleaning underway across IAM, HR, and entitlement datasets	In progress	Complete null handling, duplicate removal, and standardization	Foundational step before automation
+End-to-End Automation	Design approach defined	Not started (Planned)	Automate headcount and IAM file ingestion	Targeting fully automated pipeline
+AWS Deployment	Architecture planning completed at high level	Pending	Provision AWS access and environments	Required before deployment
+Data Landing to S3	Target data lake design identified	Pending	Automate landing of headcount & IAM files into Amazon S3	Prerequisite for scalable processing
+Overall Deployment	Development phase ongoing	Not deployed	Deployment to be executed post automation & AWS access	No production impact yet
