@@ -1,10 +1,10 @@
 import pandas as pd
 import ast
 
-def compare_drive_access(row):
-    results = []
-    
-    # Convert string to dict safely
+def build_path_perm_recon(df_hr: pd.DataFrame,
+                          col_should="SHR_DRIVE_SHD_HAVE",
+                          col_does="SHR_DRIVE_DOES_HAVE") -> pd.DataFrame:
+
     def safe_eval(x):
         if pd.isna(x):
             return {}
@@ -12,49 +12,78 @@ def compare_drive_access(row):
             return x
         try:
             return ast.literal_eval(x)
-        except:
+        except Exception:
             return {}
 
-    should_have = safe_eval(row['SHR_DRIVE_SHD_HAVE'])
-    does_have   = safe_eval(row['SHR_DRIVE_DOES_HAVE'])
+    out_rows = []
 
-    all_paths = set(should_have.keys()).union(set(does_have.keys()))
+    for _, row in df_hr.iterrows():
+        should = safe_eval(row.get(col_should))
+        does   = safe_eval(row.get(col_does))
 
-    for path in all_paths:
-        sh_perm = set(should_have.get(path, []))
-        dh_perm = set(does_have.get(path, []))
+        should_paths = set(should.keys())
+        does_paths   = set(does.keys())
+        all_paths = should_paths | does_paths
 
-        # Matched
-        for p in sh_perm.intersection(dh_perm):
-            results.append({
-                "APPLICATION": path,
-                "ACCESS_LEVEL": p,
-                "STATUS": "MATCHED"
-            })
+        for path in all_paths:
+            in_should = path in should_paths
+            in_does   = path in does_paths
 
-        # Missing
-        for p in sh_perm - dh_perm:
-            results.append({
-                "APPLICATION": path,
-                "ACCESS_LEVEL": p,
-                "STATUS": "MISSING"
-            })
+            # ----- PATH STATUS -----
+            if in_should and in_does:
+                path_status = "PATH_MATCHED"
+            elif in_should and (not in_does):
+                path_status = "PATH_MISSING"
+            else:
+                path_status = "PATH_EXCESS"
 
-        # Excess
-        for p in dh_perm - sh_perm:
-            results.append({
-                "APPLICATION": path,
-                "ACCESS_LEVEL": p,
-                "STATUS": "EXCESS"
-            })
+            sh_perms = set(should.get(path, [])) if in_should else set()
+            dh_perms = set(does.get(path, [])) if in_does else set()
 
+            # ----- PERMISSION STATUS -----
+            # If path missing/excess, all permissions are missing/excess respectively
+            if path_status == "PATH_MISSING":
+                for p in (sh_perms or {None}):
+                    new_row = row.to_dict()
+                    new_row.update({
+                        "PATH": path,
+                        "PATH_STATUS": path_status,
+                        "ACCESS_LEVEL": p,
+                        "ACCESS_STATUS": "PERM_MISSING"
+                    })
+                    out_rows.append(new_row)
+                continue
 
-    final_list = []
+            if path_status == "PATH_EXCESS":
+                for p in (dh_perms or {None}):
+                    new_row = row.to_dict()
+                    new_row.update({
+                        "PATH": path,
+                        "PATH_STATUS": path_status,
+                        "ACCESS_LEVEL": p,
+                        "ACCESS_STATUS": "PERM_EXCESS"
+                    })
+                    out_rows.append(new_row)
+                continue
 
-for _, row in df_hr.iterrows():
-    comparison = compare_drive_access(row)
-    final_list.extend(comparison)
+            # PATH_MATCHED => do permission diff
+            all_perms = sh_perms | dh_perms
 
-df_flat = pd.DataFrame(final_list)
+            for p in all_perms:
+                if p in sh_perms and p in dh_perms:
+                    perm_status = "PERM_MATCHED"
+                elif p in sh_perms and p not in dh_perms:
+                    perm_status = "PERM_MISSING"
+                else:
+                    perm_status = "PERM_EXCESS"
 
-    return results
+                new_row = row.to_dict()
+                new_row.update({
+                    "PATH": path,
+                    "PATH_STATUS": "PATH_MATCHED",
+                    "ACCESS_LEVEL": p,
+                    "ACCESS_STATUS": perm_status
+                })
+                out_rows.append(new_row)
+
+    return pd.DataFrame(out_rows)
