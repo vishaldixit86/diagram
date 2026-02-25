@@ -1,0 +1,60 @@
+import pandas as pd
+import ast
+
+def compare_drive_access(row):
+    results = []
+    
+    # Convert string to dict safely
+    def safe_eval(x):
+        if pd.isna(x):
+            return {}
+        if isinstance(x, dict):
+            return x
+        try:
+            return ast.literal_eval(x)
+        except:
+            return {}
+
+    should_have = safe_eval(row['SHR_DRIVE_SHD_HAVE'])
+    does_have   = safe_eval(row['SHR_DRIVE_DOES_HAVE'])
+
+    all_paths = set(should_have.keys()).union(set(does_have.keys()))
+
+    for path in all_paths:
+        sh_perm = set(should_have.get(path, []))
+        dh_perm = set(does_have.get(path, []))
+
+        # Matched
+        for p in sh_perm.intersection(dh_perm):
+            results.append({
+                "APPLICATION": path,
+                "ACCESS_LEVEL": p,
+                "STATUS": "MATCHED"
+            })
+
+        # Missing
+        for p in sh_perm - dh_perm:
+            results.append({
+                "APPLICATION": path,
+                "ACCESS_LEVEL": p,
+                "STATUS": "MISSING"
+            })
+
+        # Excess
+        for p in dh_perm - sh_perm:
+            results.append({
+                "APPLICATION": path,
+                "ACCESS_LEVEL": p,
+                "STATUS": "EXCESS"
+            })
+
+
+    final_list = []
+
+for _, row in df_hr.iterrows():
+    comparison = compare_drive_access(row)
+    final_list.extend(comparison)
+
+df_flat = pd.DataFrame(final_list)
+
+    return results
