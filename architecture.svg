@@ -1,0 +1,230 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <!-- Card gradients -->
+    <linearGradient id="cyanGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0e7490" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#164e63" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="tealGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d9488" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#134e4a" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d97706" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#78350f" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="roseGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e11d48" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#881337" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="engineGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e3a5f" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0f2744" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="violetGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#4c1d95" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="tableauGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#92400e" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#78350f" stop-opacity="0.2"/>
+    </linearGradient>
+    <!-- Arrow marker -->
+    <marker id="arrowCyan" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrowViolet" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#a78bfa"/>
+    </marker>
+    <marker id="arrowAmber" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#fbbf24"/>
+    </marker>
+    <!-- Drop shadow -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="900" fill="url(#bgGrad)"/>
+  <!-- Grid pattern -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(56,189,248,0.04)" stroke-width="0.5"/>
+  </pattern>
+  <rect width="1200" height="900" fill="url(#grid)"/>
+
+  <!-- ===== TITLE ===== -->
+  <text x="600" y="52" text-anchor="middle" fill="#e2e8f0" font-size="28" font-weight="600" letter-spacing="-0.5">Headcount Data Pipeline — Architecture</text>
+  <text x="600" y="76" text-anchor="middle" fill="#64748b" font-size="13" font-weight="300">4 Excel Sources  →  Python Engine  →  3 Output Files  →  Tableau Dashboard</text>
+
+  <!-- ===== SECTION: DATA SOURCES ===== -->
+  <text x="80" y="120" fill="#64748b" font-size="10" font-family="Consolas, monospace" letter-spacing="3" text-transform="uppercase">DATA SOURCES (EXCEL)</text>
+  <line x1="280" y1="117" x2="1120" y2="117" stroke="rgba(56,189,248,0.1)" stroke-width="1"/>
+
+  <!-- Source 1: Persona -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="140" width="240" height="150" rx="12" fill="url(#cyanGrad)" stroke="rgba(56,189,248,0.25)" stroke-width="1"/>
+    <rect x="80" y="140" width="240" height="3" rx="1.5" fill="#38bdf8"/>
+  </g>
+  <rect x="100" y="162" width="36" height="36" rx="8" fill="rgba(56,189,248,0.15)"/>
+  <text x="118" y="186" text-anchor="middle" fill="#38bdf8" font-size="18">👤</text>
+  <text x="148" y="180" fill="#e2e8f0" font-size="14" font-weight="600">Persona</text>
+  <text x="148" y="196" fill="#64748b" font-size="11">persona.xlsx</text>
+  <line x1="100" y1="210" x2="300" y2="210" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="100" y="230" fill="#94a3b8" font-size="11">• Employee ID</text>
+  <text x="100" y="248" fill="#94a3b8" font-size="11">• Persona / Role</text>
+  <text x="100" y="266" fill="#94a3b8" font-size="11">• Department</text>
+
+  <!-- Source 2: Cost Center-Persona Mapping -->
+  <g filter="url(#shadow)">
+    <rect x="345" y="140" width="240" height="150" rx="12" fill="url(#tealGrad)" stroke="rgba(45,212,191,0.25)" stroke-width="1"/>
+    <rect x="345" y="140" width="240" height="3" rx="1.5" fill="#2dd4bf"/>
+  </g>
+  <rect x="365" y="162" width="36" height="36" rx="8" fill="rgba(45,212,191,0.15)"/>
+  <text x="383" y="186" text-anchor="middle" fill="#2dd4bf" font-size="18">🔗</text>
+  <text x="413" y="180" fill="#e2e8f0" font-size="14" font-weight="600">Cost Center–Persona</text>
+  <text x="413" y="196" fill="#64748b" font-size="11">cost_center_persona.xlsx</text>
+  <line x1="365" y1="210" x2="565" y2="210" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="365" y="230" fill="#94a3b8" font-size="11">• Cost Center Code</text>
+  <text x="365" y="248" fill="#94a3b8" font-size="11">• Mapped Persona</text>
+  <text x="365" y="266" fill="#94a3b8" font-size="11">• Approval Authority</text>
+
+  <!-- Source 3: IAM File -->
+  <g filter="url(#shadow)">
+    <rect x="610" y="140" width="240" height="150" rx="12" fill="url(#amberGrad)" stroke="rgba(251,191,36,0.25)" stroke-width="1"/>
+    <rect x="610" y="140" width="240" height="3" rx="1.5" fill="#fbbf24"/>
+  </g>
+  <rect x="630" y="162" width="36" height="36" rx="8" fill="rgba(251,191,36,0.15)"/>
+  <text x="648" y="186" text-anchor="middle" fill="#fbbf24" font-size="18">🔐</text>
+  <text x="678" y="180" fill="#e2e8f0" font-size="14" font-weight="600">IAM File</text>
+  <text x="678" y="196" fill="#64748b" font-size="11">iam_access.xlsx</text>
+  <line x1="630" y1="210" x2="830" y2="210" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="630" y="230" fill="#94a3b8" font-size="11">• User ID</text>
+  <text x="630" y="248" fill="#94a3b8" font-size="11">• Application Access</text>
+  <text x="630" y="266" fill="#94a3b8" font-size="11">• Role / Group</text>
+
+  <!-- Source 4: Headcount / HR File -->
+  <g filter="url(#shadow)">
+    <rect x="875" y="140" width="240" height="150" rx="12" fill="url(#roseGrad)" stroke="rgba(251,113,133,0.25)" stroke-width="1"/>
+    <rect x="875" y="140" width="240" height="3" rx="1.5" fill="#fb7185"/>
+  </g>
+  <rect x="895" y="162" width="36" height="36" rx="8" fill="rgba(251,113,133,0.15)"/>
+  <text x="913" y="186" text-anchor="middle" fill="#fb7185" font-size="18">📋</text>
+  <text x="943" y="180" fill="#e2e8f0" font-size="14" font-weight="600">Headcount / HR</text>
+  <text x="943" y="196" fill="#64748b" font-size="11">headcount_hr.xlsx</text>
+  <line x1="895" y1="210" x2="1095" y2="210" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="895" y="230" fill="#94a3b8" font-size="11">• Employee Name</text>
+  <text x="895" y="248" fill="#94a3b8" font-size="11">• Manager / Org</text>
+  <text x="895" y="266" fill="#94a3b8" font-size="11">• Status (Active/Term)</text>
+
+  <!-- ===== ARROWS: Sources → Engine ===== -->
+  <line x1="200" y1="295" x2="400" y2="370" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrowCyan)" opacity="0.7"/>
+  <line x1="465" y1="295" x2="520" y2="370" stroke="#2dd4bf" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrowCyan)" opacity="0.7"/>
+  <line x1="730" y1="295" x2="680" y2="370" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrowCyan)" opacity="0.7"/>
+  <line x1="995" y1="295" x2="800" y2="370" stroke="#fb7185" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrowCyan)" opacity="0.7"/>
+
+  <!-- ===== PYTHON ENGINE ===== -->
+  <g filter="url(#shadow)">
+    <rect x="250" y="370" width="700" height="170" rx="16" fill="url(#engineGrad)" stroke="rgba(56,189,248,0.25)" stroke-width="1.5"/>
+    <rect x="250" y="370" width="700" height="3" rx="1.5" fill="#38bdf8"/>
+  </g>
+  <!-- Engine header -->
+  <rect x="280" y="392" width="48" height="48" rx="12" fill="rgba(56,189,248,0.15)" stroke="rgba(56,189,248,0.2)" stroke-width="1"/>
+  <text x="304" y="422" text-anchor="middle" fill="#38bdf8" font-size="24">⚙️</text>
+  <text x="342" y="414" fill="#e2e8f0" font-size="20" font-weight="600">Python Processing Engine</text>
+  <text x="342" y="434" fill="#64748b" font-size="12" font-weight="300">pandas · openpyxl · data transformation &amp; join logic</text>
+
+  <!-- Engine steps -->
+  <rect x="280" y="456" width="200" height="64" rx="8" fill="rgba(0,0,0,0.3)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="380" y="476" text-anchor="middle" fill="#38bdf8" font-size="9" font-family="Consolas, monospace" letter-spacing="2">STEP 01</text>
+  <text x="380" y="494" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="500">Load &amp; Validate</text>
+  <text x="380" y="510" text-anchor="middle" fill="#64748b" font-size="10">Read all 4 Excel sources</text>
+
+  <rect x="500" y="456" width="200" height="64" rx="8" fill="rgba(0,0,0,0.3)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="600" y="476" text-anchor="middle" fill="#38bdf8" font-size="9" font-family="Consolas, monospace" letter-spacing="2">STEP 02</text>
+  <text x="600" y="494" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="500">Transform &amp; Join</text>
+  <text x="600" y="510" text-anchor="middle" fill="#64748b" font-size="10">Merge persona, CC, IAM, HR</text>
+
+  <rect x="720" y="456" width="200" height="64" rx="8" fill="rgba(0,0,0,0.3)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="820" y="476" text-anchor="middle" fill="#38bdf8" font-size="9" font-family="Consolas, monospace" letter-spacing="2">STEP 03</text>
+  <text x="820" y="494" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="500">Export Outputs</text>
+  <text x="820" y="510" text-anchor="middle" fill="#64748b" font-size="10">Write 3 target Excel files</text>
+
+  <!-- ===== ARROWS: Engine → Outputs ===== -->
+  <line x1="420" y1="545" x2="250" y2="620" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrowViolet)" opacity="0.7"/>
+  <line x1="600" y1="545" x2="600" y2="620" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrowViolet)" opacity="0.7"/>
+  <line x1="780" y1="545" x2="950" y2="620" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrowViolet)" opacity="0.7"/>
+
+  <!-- ===== OUTPUT FILES ===== -->
+  <text x="80" y="600" fill="#64748b" font-size="10" font-family="Consolas, monospace" letter-spacing="3">OUTPUT FILES (EXCEL)</text>
+  <line x1="280" y1="597" x2="520" y2="597" stroke="rgba(167,139,250,0.1)" stroke-width="1"/>
+
+  <!-- Output 1: App-Permissions -->
+  <g filter="url(#shadow)">
+    <rect x="100" y="620" width="280" height="100" rx="12" fill="url(#violetGrad)" stroke="rgba(167,139,250,0.25)" stroke-width="1"/>
+  </g>
+  <rect x="120" y="642" width="32" height="32" rx="7" fill="rgba(167,139,250,0.15)"/>
+  <text x="136" y="664" text-anchor="middle" fill="#a78bfa" font-size="16">🔑</text>
+  <text x="164" y="658" fill="#e2e8f0" font-size="14" font-weight="600">App-Permissions</text>
+  <text x="164" y="676" fill="#64748b" font-size="11">app_permissions.xlsx</text>
+  <rect x="120" y="694" width="90" height="18" rx="4" fill="rgba(167,139,250,0.12)"/>
+  <text x="165" y="706" text-anchor="middle" fill="#a78bfa" font-size="9" font-family="Consolas, monospace">.xlsx output</text>
+
+  <!-- Output 2: Mailbox -->
+  <g filter="url(#shadow)">
+    <rect x="430" y="620" width="280" height="100" rx="12" fill="url(#violetGrad)" stroke="rgba(167,139,250,0.25)" stroke-width="1"/>
+  </g>
+  <rect x="450" y="642" width="32" height="32" rx="7" fill="rgba(167,139,250,0.15)"/>
+  <text x="466" y="664" text-anchor="middle" fill="#a78bfa" font-size="16">📧</text>
+  <text x="494" y="658" fill="#e2e8f0" font-size="14" font-weight="600">Mailbox</text>
+  <text x="494" y="676" fill="#64748b" font-size="11">mailbox.xlsx</text>
+  <rect x="450" y="694" width="90" height="18" rx="4" fill="rgba(167,139,250,0.12)"/>
+  <text x="495" y="706" text-anchor="middle" fill="#a78bfa" font-size="9" font-family="Consolas, monospace">.xlsx output</text>
+
+  <!-- Output 3: Share Drive -->
+  <g filter="url(#shadow)">
+    <rect x="760" y="620" width="280" height="100" rx="12" fill="url(#violetGrad)" stroke="rgba(167,139,250,0.25)" stroke-width="1"/>
+  </g>
+  <rect x="780" y="642" width="32" height="32" rx="7" fill="rgba(167,139,250,0.15)"/>
+  <text x="796" y="664" text-anchor="middle" fill="#a78bfa" font-size="16">📁</text>
+  <text x="824" y="658" fill="#e2e8f0" font-size="14" font-weight="600">Share Drive</text>
+  <text x="824" y="676" fill="#64748b" font-size="11">share_drive.xlsx</text>
+  <rect x="780" y="694" width="90" height="18" rx="4" fill="rgba(167,139,250,0.12)"/>
+  <text x="825" y="706" text-anchor="middle" fill="#a78bfa" font-size="9" font-family="Consolas, monospace">.xlsx output</text>
+
+  <!-- ===== ARROWS: Outputs → Tableau ===== -->
+  <line x1="240" y1="725" x2="440" y2="790" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrowAmber)" opacity="0.7"/>
+  <line x1="570" y1="725" x2="570" y2="790" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrowAmber)" opacity="0.7"/>
+  <line x1="900" y1="725" x2="700" y2="790" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrowAmber)" opacity="0.7"/>
+
+  <!-- ===== TABLEAU DASHBOARD ===== -->
+  <g filter="url(#shadow)">
+    <rect x="300" y="790" width="600" height="80" rx="16" fill="url(#tableauGrad)" stroke="rgba(251,191,36,0.3)" stroke-width="1.5"/>
+    <rect x="300" y="790" width="600" height="3" rx="1.5" fill="#fbbf24"/>
+  </g>
+  <rect x="330" y="808" width="48" height="48" rx="12" fill="rgba(251,191,36,0.15)" stroke="rgba(251,191,36,0.2)" stroke-width="1"/>
+  <text x="354" y="838" text-anchor="middle" fill="#fbbf24" font-size="24">📊</text>
+  <text x="394" y="828" fill="#e2e8f0" font-size="18" font-weight="600">Tableau Dashboard</text>
+  <text x="394" y="848" fill="#64748b" font-size="12" font-weight="300">Headcount · Access Audit · Cost Center Analysis · Persona Distribution</text>
+
+  <!-- ===== LEGEND ===== -->
+  <circle cx="340" cy="885" r="4" fill="#38bdf8"/>
+  <text x="350" y="889" fill="#64748b" font-size="10" font-family="Consolas, monospace">Data Sources</text>
+  <circle cx="460" cy="885" r="4" fill="#38bdf8"/>
+  <text x="470" y="889" fill="#64748b" font-size="10" font-family="Consolas, monospace">Processing</text>
+  <circle cx="570" cy="885" r="4" fill="#a78bfa"/>
+  <text x="580" y="889" fill="#64748b" font-size="10" font-family="Consolas, monospace">Outputs</text>
+  <circle cx="660" cy="885" r="4" fill="#fbbf24"/>
+  <text x="670" y="889" fill="#64748b" font-size="10" font-family="Consolas, monospace">Visualization</text>
+  <line x1="770" y1="885" x2="800" y2="885" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="808" y="889" fill="#64748b" font-size="10" font-family="Consolas, monospace">Data Flow</text>
+</svg>
