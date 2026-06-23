@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1800" height="760" viewBox="0 0 1800 760" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L12,7 L2,12 z" fill="#1f2937"/>
+    </marker>
+    <style>
+      .title { font: bold 34px Arial, sans-serif; fill: #111827; }
+      .subtitle { font: 18px Arial, sans-serif; fill: #4b5563; }
+      .axis { stroke: #1f2937; stroke-width: 5; marker-end: url(#arrow); }
+      .dot { fill: #2563eb; stroke: #ffffff; stroke-width: 5; }
+      .box-title { font: bold 18px Arial, sans-serif; fill: #111827; }
+      .box-text { font: 15px Arial, sans-serif; fill: #374151; }
+      .time { font: bold 17px Arial, sans-serif; fill: #1d4ed8; }
+      .note-title { font: bold 18px Arial, sans-serif; fill: #7c2d12; }
+      .note-text { font: 15px Arial, sans-serif; fill: #7c2d12; }
+      .label { font: bold 16px Arial, sans-serif; fill: #111827; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1800" height="760" fill="#ffffff"/>
+
+  <text x="900" y="55" text-anchor="middle" class="title">Dashboard Change Timeline</text>
+  <text x="900" y="88" text-anchor="middle" class="subtitle">
+    Example: Q2 dashboard preparation starts at the end of Week 2 of Q1
+  </text>
+
+  <!-- Timeline axis -->
+  <line x1="120" y1="190" x2="1660" y2="190" class="axis"/>
+
+  <!-- Milestone dots -->
+  <circle cx="160" cy="190" r="16" class="dot"/>
+  <circle cx="455" cy="190" r="16" class="dot"/>
+  <circle cx="750" cy="190" r="16" class="dot"/>
+  <circle cx="1045" cy="190" r="16" class="dot"/>
+  <circle cx="1340" cy="190" r="16" class="dot"/>
+  <circle cx="1620" cy="190" r="16" class="dot"/>
+
+  <!-- Labels above dots -->
+  <text x="160" y="150" text-anchor="middle" class="label">Point 1</text>
+  <text x="455" y="150" text-anchor="middle" class="label">Point 2</text>
+  <text x="750" y="150" text-anchor="middle" class="label">Point 3</text>
+  <text x="1045" y="150" text-anchor="middle" class="label">Point 4</text>
+  <text x="1340" y="150" text-anchor="middle" class="label">Point 5</text>
+  <text x="1620" y="150" text-anchor="middle" class="label">Point 6</text>
+
+  <!-- Connector lines down -->
+  <line x1="160" y1="206" x2="160" y2="260" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="455" y1="206" x2="455" y2="260" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="750" y1="206" x2="750" y2="260" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="1045" y1="206" x2="1045" y2="260" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="1340" y1="206" x2="1340" y2="260" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="1620" y1="206" x2="1620" y2="260" stroke="#94a3b8" stroke-width="2"/>
+
+  <!-- Box 1 -->
+  <rect x="35" y="260" width="250" height="210" rx="16" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="160" y="292" text-anchor="middle" class="time">End of Week 2 - Q1</text>
+  <text x="160" y="328" text-anchor="middle" class="box-title">Files Called</text>
+  <text x="160" y="360" text-anchor="middle" class="box-text">Files requested for</text>
+  <text x="160" y="383" text-anchor="middle" class="box-text">Q2 dashboard</text>
+  <text x="160" y="420" text-anchor="middle" class="box-text">Headcount, SHD Have,</text>
+  <text x="160" y="443" text-anchor="middle" class="box-text">IAM, Persona-Cost</text>
+
+  <!-- Box 2 -->
+  <rect x="330" y="260" width="250" height="210" rx="16" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+  <text x="455" y="292" text-anchor="middle" class="time">Weeks 3-6 - Q1</text>
+  <text x="455" y="328" text-anchor="middle" class="box-title">Collect &amp; Review</text>
+  <text x="455" y="360" text-anchor="middle" class="box-text">Data collection,</text>
+  <text x="455" y="383" text-anchor="middle" class="box-text">checking and file updates</text>
+  <text x="455" y="420" text-anchor="middle" class="box-text">Roughly 4 weeks</text>
+  <text x="455" y="443" text-anchor="middle" class="box-text">for review cycle</text>
+
+  <!-- Box 3 -->
+  <rect x="625" y="260" width="250" height="210" rx="16" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="750" y="292" text-anchor="middle" class="time">Week 7 - Q1</text>
+  <text x="750" y="328" text-anchor="middle" class="box-title">Shared Drive</text>
+  <text x="750" y="360" text-anchor="middle" class="box-text">Reviewed and updated</text>
+  <text x="750" y="383" text-anchor="middle" class="box-text">files saved in</text>
+  <text x="750" y="406" text-anchor="middle" class="box-text">shared drive / folder</text>
+
+  <!-- Box 4 -->
+  <rect x="920" y="260" width="250" height="210" rx="16" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="1045" y="292" text-anchor="middle" class="time">Week 8 - Q1</text>
+  <text x="1045" y="328" text-anchor="middle" class="box-title">Python Invoked</text>
+  <text x="1045" y="360" text-anchor="middle" class="box-text">Python engine picks</text>
+  <text x="1045" y="383" text-anchor="middle" class="box-text">reviewed files and</text>
+  <text x="1045" y="406" text-anchor="middle" class="box-text">generates outputs</text>
+
+  <!-- Box 5 -->
+  <rect x="1215" y="260" width="250" height="210" rx="16" fill="#ccfbf1" stroke="#0f766e" stroke-width="2"/>
+  <text x="1340" y="292" text-anchor="middle" class="time">Week 9 - Q1</text>
+  <text x="1340" y="328" text-anchor="middle" class="box-title">Output Review</text>
+  <text x="1340" y="360" text-anchor="middle" class="box-text">App-Perm, Mailbox,</text>
+  <text x="1340" y="383" text-anchor="middle" class="box-text">Shared Drive outputs</text>
+  <text x="1340" y="420" text-anchor="middle" class="box-text">reviewed and used for</text>
+  <text x="1340" y="443" text-anchor="middle" class="box-text">dashboard generation</text>
+
+  <!-- Box 6 -->
+  <rect x="1495" y="260" width="250" height="210" rx="16" fill="#bbf7d0" stroke="#15803d" stroke-width="2"/>
+  <text x="1620" y="292" text-anchor="middle" class="time">Start of Q2</text>
+  <text x="1620" y="328" text-anchor="middle" class="box-title">Dashboard Deployed</text>
+  <text x="1620" y="360" text-anchor="middle" class="box-text">Q2 Tableau dashboard</text>
+  <text x="1620" y="383" text-anchor="middle" class="box-text">refreshed and deployed</text>
+  <text x="1620" y="420" text-anchor="middle" class="box-text">to stakeholders</text>
+
+  <!-- Summary bar -->
+  <rect x="150" y="555" width="1500" height="110" rx="20" fill="#ffedd5" stroke="#f97316" stroke-width="2"/>
+  <text x="900" y="592" text-anchor="middle" class="note-title">Timeline Summary</text>
+  <text x="900" y="625" text-anchor="middle" class="note-text">
+    File request at end of Week 2 → 4 weeks data collection/review → shared drive → Python output generation → 1 week output review &amp; Tableau dashboard generation → dashboard deployed.
+  </text>
+  <text x="900" y="653" text-anchor="middle" class="note-text">
+    This pattern repeats roughly 3 times per year for major dashboard changes.
+  </text>
+
+</svg>
